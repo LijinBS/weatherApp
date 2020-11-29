@@ -1,0 +1,108 @@
+@mixin backgroundCard {
+    content: "";
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.25;
+}
+
+.card-header {
+  .group {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .title {
+      text-transform: capitalize;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .btn {
+      cursor: pointer;
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+    .icon {
+      cursor: pointer;
+    }
+    .error {
+      font-size: 14px;
+      color: red;
+    }
+  }
+}
+.card-body {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  &.emptyContainer:before {
+      @include backgroundCard;
+      background-image: url("../../assets/disabled.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+  }
+  &.emptyContainer {
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+  }
+  &.rainy::before {
+      background-image: url("../../assets/rainy.jpg");
+      @include backgroundCard;
+
+  }
+  &.sunny::before {
+      background-image: url("../../assets/sunny.jpg");
+      @include backgroundCard;
+
+  }
+  &.cloudy::before {
+      background-image: url("../../assets/cloudy.jpg");
+      @include backgroundCard;
+
+  }
+
+  .card-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .temperatureContainer {
+      display: flex;
+      align-items: center;
+      .temperature {
+        font-size: 36px;
+      }
+    }
+  }
+  .card-text {
+    .desc {
+      display: flex;
+      font-weight: bold;
+      .capitalize {
+        text-transform: capitalize;
+        padding-left: 5px;
+      }
+    }
+    .keypoints {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      border-left: 5px solid orange;
+      padding-left: 20px;
+      div {
+        margin-right: 20px;
+      }
+    }
+  }
+}
